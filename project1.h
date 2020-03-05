@@ -44,7 +44,7 @@ class Obrabiarka
         int acces_iloscCzasow();
         Czas* acces_zestawCzasow();
         void zmien_czas(Czas& o1, int index);
-        void pokaz_cale_zestawienie(); // c)
+        void pokaz_cale_zestawienie(); // c).
         void pokaz_czas(int index);
         Czas zsumuj_wszystkie();    // b)
         void operator=(const Obrabiarka& obrabiarka2);

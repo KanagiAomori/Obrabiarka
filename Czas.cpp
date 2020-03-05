@@ -85,7 +85,7 @@ void Czas::change_all(int Godziny, int Minuty, int Sekundy) {
     }
 }
 
-Czas& Czas::operator+(Czas _czas2)    // funkcja operatora zwraca tymczasowy obiekt typu czas
+Czas& Czas::operator+(Czas _czas2)    // funkcja operatora zwraca tymczasowy obiekt typu czas.
 {
     Czas& temp = _czas2;
     temp.godziny += godziny;

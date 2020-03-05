@@ -6,7 +6,7 @@ Obrabiarka::Obrabiarka() {
     std::cout << "object constructed - Obrabiarka" << std::endl;
 }
 
-Obrabiarka::Obrabiarka(const Obrabiarka& kopia) { // no nie dziala
+Obrabiarka::Obrabiarka(const Obrabiarka& kopia) { // no nie dziala.
     iloscCzasow = kopia.iloscCzasow;
     zestawCzasow = new Czas[kopia.iloscCzasow];
     for(int i = 0; i < iloscCzasow; i++) {

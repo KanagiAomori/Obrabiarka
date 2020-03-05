@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     Czas o4;
     //o4 = o1;
     o4.operator=(o1);
-    Czas o5(o3);    // konstr kopiujacy
+    Czas o5(o3);    // konstr kopiujacy.
     textDisplay("tworzenie obrabiarki i zestawu czasow");
     Obrabiarka ob1;
     ob1.dodaj_czas(o1);
