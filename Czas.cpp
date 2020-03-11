@@ -1,5 +1,4 @@
 #include "project1.h"
-bool is_int(int zmienna);
 
 Czas::Czas(int Godziny, int Minuty, int Sekundy) {
     godziny = Godziny;
@@ -7,7 +6,7 @@ Czas::Czas(int Godziny, int Minuty, int Sekundy) {
     sekundy = Sekundy;
     std::cout << "object constructed - Czas" << std::endl;
 }
-
+/*
 Czas::Czas(int Minuty, int Sekundy) {
     minuty = Minuty;
     sekundy = Sekundy;
@@ -28,9 +27,9 @@ Czas::Czas(void) {
     godziny = 0;
     std::cout << "object constructed - Czas" << std::endl;    
 }
+*/
 
-
-Czas::Czas(Czas& kopia) {
+Czas::Czas(const Czas& kopia) {
     godziny = kopia.godziny;
     minuty = kopia.minuty;
     sekundy = kopia.sekundy;
@@ -85,9 +84,9 @@ void Czas::change_all(int Godziny, int Minuty, int Sekundy) {
     }
 }
 
-Czas& Czas::operator+(Czas _czas2)    // funkcja operatora zwraca tymczasowy obiekt typu czas.
+Czas Czas::operator+(Czas& _czas2)
 {
-    Czas& temp = _czas2;
+    Czas temp = _czas2;
     temp.godziny += godziny;
     temp.minuty += minuty;
     temp.sekundy += sekundy;
@@ -141,6 +140,7 @@ bool Czas::operator==(Czas& _czas2) {
     else
         return false;
 }
+
 
 void Czas::display() {
     std::cout << "Sekundy: " << sekundy << " Minuty: " << minuty << " Godziny: " << godziny << std::endl;

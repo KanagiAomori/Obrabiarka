@@ -35,18 +35,19 @@ int main(int argc, char** argv)
     ob1.dodaj_czas(o3);
     ob1.dodaj_czas(o4);
     ob1.dodaj_czas(o5);
-
+    ob1.dodaj_czas(o5);
     textDisplay("wpisanie zestawienia");
     ob1.pokaz_cale_zestawienie();
-
     textDisplay("zsumowanie czasow w zestawieniu");
     ob1.zsumuj_wszystkie().display();
 
     textDisplay("pokazanie wybranego czasu czasu");
     ob1.pokaz_czas(3);  
     
+    textDisplay("operator []");
+    ob1.operator[](2).display();   
     textDisplay("Konstruktor kopiujacy Obrabirka");
-    Obrabiarka ob2(ob1);    // tu sie zaczyna psuc
+    Obrabiarka ob2(ob1);    
     ob2.pokaz_cale_zestawienie();
     
     textDisplay("operator przyrownania");    

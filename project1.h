@@ -1,6 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <cstring>
+/*
+struct allocatedMemory {
+    uint32_t totalAlocated = 0;
+    uint32_t totalFreed = 0;
+
+    uint32_t currentUsage() { return totalAlocated - totalFreed; }
+};
+*/
 
 class Czas 
 {
@@ -9,11 +17,11 @@ class Czas
         int minuty;
         int sekundy;
     public:
-        Czas(int Godziny, int Minuty, int Sekundy); // konstruktor i desktruktor
-        Czas(int Minuty, int Sekundy);
-        Czas(int Sekundy);
-        Czas(void);
-        Czas(Czas& kopia);
+        Czas(int Godziny = 0, int Minuty = 0, int Sekundy = 0); // wartości domyślne tylko w .h
+        //Czas(int Minuty, int Sekundy);  // te konstruktory mogą być przez to niepotrzebne
+        //Czas(int Sekundy);
+        //Czas(void);
+        Czas(const Czas& kopia);
         ~Czas();
         int acces_godziny();    // akcesory
         int acces_minuty();
@@ -23,7 +31,7 @@ class Czas
         void change_sekundy(int Sekundy);
         void change_all(int Godziny, int Minuty, int Sekundy);
         void display(); // metody
-        Czas& operator+(Czas _czas2);    //operatory
+        Czas operator+(Czas& _czas2);    //operatory
         Czas& operator=(Czas& _czas2);
         Czas& operator+=(Czas& _czas2);
         bool operator>(Czas& _czas2);
@@ -47,6 +55,6 @@ class Obrabiarka
         void pokaz_cale_zestawienie(); // c).
         void pokaz_czas(int index);
         Czas zsumuj_wszystkie();    // b)
-        void operator=(const Obrabiarka& obrabiarka2);
-        Czas& operator[] (int x);
+        Obrabiarka& operator=(const Obrabiarka& obrabiarka2);
+        Czas& operator[](int index);
 };
