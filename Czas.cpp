@@ -4,7 +4,7 @@ Czas::Czas(int Godziny, int Minuty, int Sekundy) {
     godziny = Godziny;
     minuty = Minuty;
     sekundy = Sekundy;
-    std::cout << "object constructed - Czas" << std::endl;
+    //std::cout << "object constructed - Czas" << std::endl;
 }
 /*
 Czas::Czas(int Minuty, int Sekundy) {
@@ -33,11 +33,11 @@ Czas::Czas(const Czas& kopia) {
     godziny = kopia.godziny;
     minuty = kopia.minuty;
     sekundy = kopia.sekundy;
-    std::cout << "object constructed - Czas" << std::endl;
+    //std::cout << "object constructed - Czas" << std::endl;
 }
 
 Czas::~Czas() {
-    std::cout << "object destructed - Czas" << std::endl;
+    //std::cout << "object destructed - Czas" << std::endl;
 }
 
 int Czas::acces_godziny() {
@@ -101,7 +101,17 @@ Czas Czas::operator+(Czas& _czas2)
     return temp;
 }
 
-Czas& Czas::operator=(Czas& _czas2) { // cos do poprawy
+Czas Czas::operator+(int Sekundy) { // 2.2 dodanie sekund
+    Czas temp(*this);
+    temp.sekundy += Sekundy;
+    if (temp.sekundy >= 60){
+        temp.sekundy = sekundy - 60;
+        temp.minuty++;
+    }
+    return temp;
+}
+
+Czas& Czas::operator=(Czas& _czas2) {
     godziny = _czas2.godziny;
     minuty = _czas2.minuty;
     sekundy = _czas2.sekundy;
@@ -129,6 +139,19 @@ bool Czas::operator>(Czas& _czas2) {
     else if(minuty > _czas2.minuty)
         return true;
     else if(sekundy > _czas2.sekundy)
+        return true;
+    else
+        return false;
+}
+
+bool Czas::operator<=(Czas& _czas2) {
+    if(*this == _czas2)
+        return true;
+    if(godziny < _czas2.godziny)
+        return true;
+    else if(minuty < _czas2.minuty)
+        return true;
+    else if(sekundy < _czas2.sekundy)
         return true;
     else
         return false;

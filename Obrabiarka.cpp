@@ -6,6 +6,11 @@ Obrabiarka::Obrabiarka() {
     std::cout << "object constructed - Obrabiarka" << std::endl;
 }
 
+Obrabiarka::Obrabiarka(int IloscCzasow) {
+    iloscCzasow = IloscCzasow;
+    zestawCzasow = new Czas[IloscCzasow];
+    std::cout << "object constructed - Obrabiarka" << std::endl;
+}
 Obrabiarka::Obrabiarka(const Obrabiarka& kopia) {
     iloscCzasow = kopia.iloscCzasow;
     zestawCzasow = new Czas[kopia.iloscCzasow];
@@ -71,8 +76,27 @@ Czas Obrabiarka::zsumuj_wszystkie() {
     return suma;
 }
 
+Obrabiarka Obrabiarka::kopia(int n) {
+    Obrabiarka kopia(n);
+    memcpy(kopia.zestawCzasow, zestawCzasow, kopia.iloscCzasow * sizeof(Czas));
+    return kopia;
+}
 
-Obrabiarka& Obrabiarka::operator=(const Obrabiarka& obrabiarka2) {   // i tu też nie dokońca
+Obrabiarka Obrabiarka::kopia_z_zakresem_czasu(Czas zakres) {
+    int n;
+    Czas suma;
+    for(n = 0; suma <= zakres && n < iloscCzasow; n++) {
+        suma += this->zestawCzasow[n];  // git
+    }
+    Obrabiarka kopia(n);
+    memcpy(kopia.zestawCzasow, this->zestawCzasow, kopia.iloscCzasow * sizeof(Czas));
+    return kopia;
+}
+
+
+Obrabiarka& Obrabiarka::operator=(const Obrabiarka& obrabiarka2) {
+    if(&obrabiarka2 == this)    // objects are the same
+        return *this;
     iloscCzasow = obrabiarka2.iloscCzasow;
     delete[] zestawCzasow;
     zestawCzasow = new Czas[iloscCzasow];
