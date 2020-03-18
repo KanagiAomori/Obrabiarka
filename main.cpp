@@ -5,6 +5,7 @@ void textDisplay(const char* line);
 
 int main(int argc, char** argv)
 {
+    textDisplay("Autor Projektu: Piotr Debski");
     textDisplay("Test klasy Czas");
     Czas o1(5, 4, 3);
     o1.display();

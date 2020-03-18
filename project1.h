@@ -32,9 +32,11 @@ class Czas
         void change_all(int Godziny, int Minuty, int Sekundy);
         void display(); // metody
         Czas operator+(Czas& _czas2);    //operatory
+        Czas operator+(int Sekundy);
         Czas& operator=(Czas& _czas2);
         Czas& operator+=(Czas& _czas2);
         bool operator>(Czas& _czas2);
+        bool operator<=(Czas& _czas2);
         bool operator==(Czas& _czas2);
 };
 
@@ -46,6 +48,7 @@ class Obrabiarka
         //std::vector<Czas> zestawCzasow;
     public: 
         Obrabiarka();
+        Obrabiarka(int IloscCzasow);
         Obrabiarka(const Obrabiarka& kopia);
         ~Obrabiarka();
         void dodaj_czas(Czas& nowy);  // a)
@@ -55,6 +58,17 @@ class Obrabiarka
         void pokaz_cale_zestawienie(); // c).
         void pokaz_czas(int index);
         Czas zsumuj_wszystkie();    // b)
+        Obrabiarka kopia(int n);    // n - ilosc czasow do skopiowania
+        Obrabiarka kopia_z_zakresem_czasu(Czas zakres);
         Obrabiarka& operator=(const Obrabiarka& obrabiarka2);
         Czas& operator[](int index);
+};
+
+class Pracownik
+{
+    private:
+        Obrabiarka ob1;
+    public:
+        Pracownik();
+        ~Pracownik();
 };

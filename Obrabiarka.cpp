@@ -3,13 +3,13 @@
 Obrabiarka::Obrabiarka() {
     iloscCzasow = 0;
     zestawCzasow = nullptr;
-    std::cout << "object constructed - Obrabiarka" << std::endl;
+    //std::cout << "object constructed - Obrabiarka" << std::endl;
 }
 
 Obrabiarka::Obrabiarka(int IloscCzasow) {
     iloscCzasow = IloscCzasow;
     zestawCzasow = new Czas[IloscCzasow];
-    std::cout << "object constructed - Obrabiarka" << std::endl;
+    //std::cout << "object constructed - Obrabiarka" << std::endl;
 }
 Obrabiarka::Obrabiarka(const Obrabiarka& kopia) {
     iloscCzasow = kopia.iloscCzasow;
@@ -17,13 +17,13 @@ Obrabiarka::Obrabiarka(const Obrabiarka& kopia) {
     for(int i = 0; i < iloscCzasow; i++) {
         memcpy(zestawCzasow, kopia.zestawCzasow, iloscCzasow * sizeof(Czas));
     }
-    std::cout << "object constructed - Obrabiarka" << std::endl;
+    //std::cout << "object constructed - Obrabiarka" << std::endl;
 }
 
 Obrabiarka::~Obrabiarka() {
     if(zestawCzasow != nullptr)
-    delete[] zestawCzasow;
-    std::cout << "object destructed - Obrabiarka" << std::endl;
+        delete[] zestawCzasow;
+    //std::cout << "object destructed - Obrabiarka" << std::endl;
 }
 
 void Obrabiarka::dodaj_czas(Czas& nowy) {
@@ -81,18 +81,17 @@ Obrabiarka Obrabiarka::kopia(int n) {
     memcpy(kopia.zestawCzasow, zestawCzasow, kopia.iloscCzasow * sizeof(Czas));
     return kopia;
 }
-
 Obrabiarka Obrabiarka::kopia_z_zakresem_czasu(Czas zakres) {
-    int n;
+    int n = 0;
     Czas suma;
-    for(n = 0; suma <= zakres && n < iloscCzasow; n++) {
-        suma += this->zestawCzasow[n];  // git
+    while ( (zakres > (suma += zestawCzasow[n])) && n < iloscCzasow){
+        n++;
     }
-    Obrabiarka kopia(n);
-    memcpy(kopia.zestawCzasow, this->zestawCzasow, kopia.iloscCzasow * sizeof(Czas));
+    Obrabiarka kopia(n);   // nowy obiekt z pamięcią na n czasów
+    memcpy(kopia.zestawCzasow, zestawCzasow, n * sizeof(Czas) );
+
     return kopia;
 }
-
 
 Obrabiarka& Obrabiarka::operator=(const Obrabiarka& obrabiarka2) {
     if(&obrabiarka2 == this)    // objects are the same

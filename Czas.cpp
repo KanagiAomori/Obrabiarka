@@ -134,14 +134,21 @@ Czas& Czas::operator+=(Czas& _czas2) {
 }
 
 bool Czas::operator>(Czas& _czas2) {
-    if(godziny > _czas2.godziny)
+    if (godziny > _czas2.godziny){
+        std::cout << "godziny: " << godziny << "_czas2.godziny: " << _czas2.godziny << std::endl;
         return true;
-    else if(minuty > _czas2.minuty)
+    }
+    if (minuty > _czas2.minuty && godziny == _czas2.godziny){
+        std::cout << "minuty: " << minuty << "_czas2.minuty: " << _czas2.minuty << std::endl;
         return true;
-    else if(sekundy > _czas2.sekundy)
+    }
+    if (sekundy > _czas2.sekundy && godziny == _czas2.godziny && minuty == _czas2.minuty){
+        std::cout << "sekundy: " << sekundy << "_czas2.sekundy: " << _czas2.sekundy << std::endl;
         return true;
-    else
-        return false;
+    }
+    else {
+        return false; // is < or =
+    }
 }
 
 bool Czas::operator<=(Czas& _czas2) {
